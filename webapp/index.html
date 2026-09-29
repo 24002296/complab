@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniLab Booking System</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="toast-container"></div>
+
+  <div id="auth-view" class="auth-shell">
+    <div class="auth-brand">
+      <div class="brand-mark">UL</div>
+      <div>
+        <h1>UniLab</h1>
+        <p>Computer Laboratory Booking System</p>
+      </div>
+    </div>
+
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-auth="login">Login</button>
+        <button class="auth-tab" data-auth="register">Register</button>
+      </div>
+
+      <section id="login-panel" class="auth-panel active">
+        <div class="panel-heading">
+          <h2>Welcome back</h2>
+          <p>Sign in to manage your laboratory bookings.</p>
+        </div>
+        <form id="login-form">
+          <label>User ID or Email
+            <input id="login-identifier" type="text" placeholder="e.g. student01" required>
+          </label>
+          <label>Password
+            <input id="login-password" type="password" placeholder="Enter password" required>
+          </label>
+          <button class="btn primary full" type="submit">Sign In</button>
+        </form>
+        <div class="demo-box">
+          <strong>Demo accounts</strong>
+          <span>Student: <b>student01</b> / <b>student123</b></span>
+          <span>Lecturer: <b>lecturer01</b> / <b>lecturer123</b></span>
+          <span>Admin: <b>admin</b> / <b>admin123</b></span>
+        </div>
+      </section>
+
+      <section id="register-panel" class="auth-panel">
+        <div class="panel-heading">
+          <h2>Create account</h2>
+          <p>Register as a student or lecturer.</p>
+        </div>
+        <form id="register-form">
+          <div class="form-grid">
+            <label>Full Name
+              <input id="reg-name" type="text" placeholder="Full name" required>
+            </label>
+            <label>User ID
+              <input id="reg-userid" type="text" placeholder="e.g. st2026001" required>
+            </label>
+            <label>Email
+              <input id="reg-email" type="email" placeholder="name@example.com" required>
+            </label>
+            <label>Role
+              <select id="reg-role" required>
+                <option value="STUDENT">Student</option>
+                <option value="LECTURER">Lecturer</option>
+              </select>
+            </label>
+            <label>Password
+              <input id="reg-password" type="password" minlength="6" placeholder="Minimum 6 characters" required>
+            </label>
+            <label>Confirm Password
+              <input id="reg-confirm" type="password" minlength="6" placeholder="Repeat password" required>
+            </label>
+          </div>
+          <label class="check-row">
+            <input id="reg-terms" type="checkbox" required>
+            <span>I confirm that the registration details are correct.</span>
+          </label>
+          <button class="btn primary full" type="submit">Create Account</button>
+        </form>
+      </section>
+    </div>
+    <p class="storage-note">This version stores application data in this browser's localStorage. No database connection is required.</p>
+  </div>
+
+  <div id="app-view" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark">UL</div>
+        <div>
+          <strong>UniLab</strong>
+          <small>Booking System</small>
+        </div>
+      </div>
+      <nav id="main-nav">
+        <button class="nav-item active" data-page="dashboard"><span>⌂</span> Dashboard</button>
+        <button class="nav-item" data-page="book"><span>＋</span> Book a Lab</button>
+        <button class="nav-item" data-page="bookings"><span>▣</span> My Bookings</button>
+        <button class="nav-item" data-page="labs"><span>▤</span> Laboratories</button>
+        <button class="nav-item" data-page="profile"><span>◎</span> My Profile</button>
+        <button class="nav-item admin-only hidden" data-page="admin"><span>⚙</span> Administration</button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-mini">
+          <div id="sidebar-avatar" class="avatar"></div>
+          <div><strong id="sidebar-name"></strong><small id="sidebar-role"></small></div>
+        </div>
+        <button id="logout-btn" class="logout-btn">↪ Logout</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">COMPUTER LAB BOOKING</p>
+          <h2 id="page-title">Dashboard</h2>
+        </div>
+        <div class="topbar-user">
+          <span id="topbar-date"></span>
+          <div id="topbar-avatar" class="avatar"></div>
+        </div>
+      </header>
+
+      <div id="page-content"></div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
